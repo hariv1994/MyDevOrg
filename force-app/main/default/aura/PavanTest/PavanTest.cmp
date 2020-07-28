@@ -1,0 +1,6 @@
+<aura:component implements="flexipage:availableForAllPageTypes" controller="PavanTest" access="global">
+    
+    <lightning:button variant="brand" label="Brand action" title="Brand action" 
+                      onclick="{! c.handleClick }" />
+	
+</aura:component>

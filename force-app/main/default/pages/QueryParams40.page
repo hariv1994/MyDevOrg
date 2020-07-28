@@ -1,0 +1,27 @@
+<apex:page standardController="Account">
+    <!-- <apex:detail subject="{!account.Id}" relatedList="false" inlineEdit="true"/> -->
+    <apex:pageBlock title="Contacts">
+        <apex:form >
+            <apex:dataTable value="{!account.contacts}" var="c" cellpadding="4" border="1">
+                <apex:column >
+                    <apex:facet name="header">Name</apex:facet>
+                    <apex:commandLink reRender="det">
+                        {!c.name}
+                        <apex:param name="cid" value="{!c.id}"/>
+                    </apex:commandLink>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Phone</apex:facet>
+                    {!c.Phone}
+                </apex:column>            
+            </apex:dataTable>
+        </apex:form>
+    </apex:pageBlock>
+    <apex:outputPanel id="det">
+        <apex:actionStatus startText="Requesting...">
+            <apex:facet name="stop">
+                <apex:detail subject="{!$CurrentPage.parameters.cid}" relatedList="false" inlineEdit="true"/>
+            </apex:facet>
+        </apex:actionStatus>
+    </apex:outputPanel>
+</apex:page>

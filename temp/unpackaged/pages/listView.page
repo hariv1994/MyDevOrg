@@ -1,0 +1,15 @@
+<apex:page standardController="Candidate__c" recordSetVar="candidates">
+    <apex:form >
+        <apex:pageBlock title="All candidate records">
+            <apex:pageblockTable value="{!candidates}" var="c">
+                <apex:column >
+                    <apex:commandLink value="{!c.Name}" action="/{!c.id}"/>
+                </apex:column>
+                <apex:column value="{!c.First_Name__c}"/>
+                <apex:column value="{!c.Last_Name__c}"/>
+                <apex:column value="{!c.Mobile__c}"/>
+                <apex:column value="{!c.Visa_Required__c}"/>
+            </apex:pageblockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

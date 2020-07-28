@@ -1,0 +1,12 @@
+<apex:page standardController="Account">
+    <apex:form >
+        <apex:pageBlock title="My Account Information">
+            <apex:pageBlockSection title="General Info">
+                <apex:inputField value="{!Account.Name}" taborderhint="4"/>
+                <apex:inputField value="{!Account.Website}" taborderhint="1"/>
+                <apex:inputField value="{!Account.Industry}" taborderhint="2"/>
+                <apex:inputField value="{!Account.AnnualRevenue}" taborderhint="3"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

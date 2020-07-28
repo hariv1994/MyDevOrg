@@ -1,0 +1,22 @@
+<apex:page sidebar="false" showHeader="false" name="DisplayImage">
+    <h1>
+        Hello World
+    </h1>
+    <apex:image url="https://developer.salesforce.com/files/salesforce-developer-network-logo.png"/>
+    <apex:pageBlock title="Sarat Page Block">
+        <apex:pageBlockSection title="Page Block Section Title">
+        	I am three point deep!!!
+        </apex:pageBlockSection>    
+        <apex:pageBlockSection title="2nd section">
+        	This is the second page block section @!!
+        </apex:pageBlockSection>
+        {! $User.FirstName} 
+        <p> Next week date is {!Today() + 7}</p>
+        <p> Maximum number is: {!Max(1,5,9,15,2,27,32,4,8)}</p>
+        <p>Square root of 25 is {!sqrt(25)}</p>
+        <p>This year is {!year(today())}</p>
+        <p>Is this statement true? {! contains('salesforce.com','force.com')}</p>
+        <p>{! if($User.IsActive, $User.Username, 'Not active')}</p>
+        {!$User.Username & '   ' & $User.Alias & '   ' & $User.FirstName & '   ' & $User.LastName} 
+    </apex:pageBlock>
+</apex:page>

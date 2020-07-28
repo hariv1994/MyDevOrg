@@ -1,0 +1,7 @@
+<apex:page StandardController="Student__c" sidebar="false" showHeader="false">
+<apex:pageBlock title="Student Details">
+You are viewing the {!Student__c.Name} details
+</apex:pageBlock>
+<h1> Student Details</h1>
+ <apex:detail />
+</apex:page>

@@ -1,0 +1,10 @@
+<aura:component >
+    
+    <aura:attribute name="item" type="boolean" default="false" />
+    
+    <p> Default value: {!v.item}
+    </p>
+    
+    <lightning:button aura:id="packedBtn" label="Packed!" onclick="{!c.packItem}" disabled="{!v.item}"/>
+	
+</aura:component>

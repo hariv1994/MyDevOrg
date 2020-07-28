@@ -1,0 +1,18 @@
+<aura:component >
+    <aura:attribute name="names" type="List" default="['sarat','valli','teja']" />
+    
+    <c:helloMessage message="{!v.names[0]}" />
+    <c:helloMessage message="{!v.names[1]}" />
+    <c:helloMessage message="{!v.names[2]}" />
+    <br /> <br/>
+    <aura:iteration items="{!v.names}" var="name" >
+        <c:helloMessage message="{!name}" />
+    </aura:iteration>
+    <h5>Conditional statement and evaluations!</h5>
+    <aura:if isTrue="{!$Browser.isIPhone}">
+        <p><c:helloMessage message="{!v.names[0]}" /></p>
+        <aura:set attribute="else">
+            <p><c:helloMessage message="{!v.names[2]}"/> </p>
+        </aura:set>
+    </aura:if>
+</aura:component>

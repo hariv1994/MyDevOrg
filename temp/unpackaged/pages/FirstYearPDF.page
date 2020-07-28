@@ -1,0 +1,105 @@
+<apex:page showHeader="false" sidebar="false" standardController="Student__c" extensions="StudentDetailExt" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false" renderAs="pdf">
+<html>
+<head>
+	<title>Header Component</title>
+	<style>
+	 @page {
+            size: letter;
+            margin: 25mm;
+            @top-center {
+                content: "GAYATRI VIDYA PARISHAD COLLEGE OF ENGINNERING(AUTONOMOUS)";
+            }
+            @bottom-center {
+                content: "Page " counter(page) " of " counter(pages);
+            }
+        }
+       
+        body {
+            font-family: Arial Unicode MS;
+        }
+        table#student, table#exam th,table#exam td, table#exam{
+		    border: 1px solid blue;
+		}
+		h2 {
+			text-align: center;
+		}
+		img {
+			display: block;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+<div class="pageBreak">
+	<apex:image id="logo" value="{!$Resource.GVPLogo}" width="100" height="100" />
+	<h2>MEMORANDUM OF MARKS</h2>
+	<div class="stuDetails">
+		<table id="student" style="width:100%">
+			<tr>
+				<th>Name :</th>
+				<td>{!Student__c.FirstName__c} <span> </span> {!Student__c.LastName__c}</td>
+				<th>Hall Ticket No :</th>
+				<td>{!Student__c.ID__c}</td>
+			</tr>	
+			<tr>
+				<th>Branch :</th>
+				<td>{!Student__c.Branch__c}</td>
+				<th>Batch :</th>
+				<td>{!Student__c.Batch__c}</td>	
+			</tr>
+			<tr>
+				<th>Phone :</th>
+				<td>{!Student__c.Phone__c}</td>
+				<th>Email :</th>
+				<td>{!Student__c.Email__c}</td>	
+			</tr>
+			<tr>
+				<th>Address :</th>
+				<td>{!Student__c.Address__c}</td>
+				<th>Remarks :</th>
+				<td>{!Student__c.Remarks__c}</td>	
+			</tr>					
+		</table>
+	</div>
+	<br/>
+	<div class="table-responsive">
+		<table id="exam" style="width:100%">
+			<tr>
+				<th>Exam Type</th>
+				<th>Course Title</th>
+				<th>Marks</th>
+			</tr>
+			<apex:repeat value="{!firstYearISemReg}" var="exam">
+				<tr>
+					<td>{!exam.ExamType__c}</td>
+					<td>{!exam.Course__r.CourseName__c}</td>
+					<td>{!exam.Marks__c}</td>
+				</tr>
+			</apex:repeat>
+			<apex:repeat value="{!firstYearIISemReg}" var="exam">
+				<tr>
+					<td>{!exam.ExamType__c}</td>
+					<td>{!exam.Course__r.CourseName__c}</td>
+					<td>{!exam.Marks__c}</td>
+				</tr>
+			</apex:repeat>
+			<apex:repeat value="{!firstYearISemSup}" var="exam">
+				<tr>
+					<td>{!exam.ExamType__c}</td>
+					<td>{!exam.Course__r.CourseName__c}</td>
+					<td>{!exam.Marks__c}</td>
+				</tr>
+			</apex:repeat>
+			<apex:repeat value="{!firstYearIISemSup}" var="exam">
+				<tr>
+					<td>{!exam.ExamType__c}</td>
+					<td>{!exam.Course__r.CourseName__c}</td>
+					<td>{!exam.Marks__c}</td>
+				</tr>
+			</apex:repeat>
+		</table>
+	</div>
+</div>
+</body>
+</html>
+</apex:page>

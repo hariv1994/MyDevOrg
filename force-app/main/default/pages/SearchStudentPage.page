@@ -1,0 +1,124 @@
+<apex:page docType="html-5.0" showHeader="false" sidebar="false" applyHtmlTag="false" controller="FetchStudents">
+<c:HeaderComponent />
+<html>
+<head>
+    <title> Fetch Student</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style type="text/css">
+        .container {
+            margin: 0 auto;
+        }
+        .btn{
+            background-color : #4c4c4c;
+            border : solid 1px #ffffff;
+            color : #ffffff;
+            padding : 2px 2px;
+        }
+        .hidesec {            
+            margin: auto;
+        }
+        li {
+            font-size: 15px;            
+            float: left;
+        }
+    </style>
+
+    <script type="text/javascript">
+       $j = jQuery.noConflict();
+       $j(document).ready(function() {
+         console.log('Hello, sarat');
+
+         $j("input[name='Searchtype']").click(function() {
+             if($j("#SearchbyHtNo").is(":checked")){
+                 console.log('in 1');
+                 $j("#showhtbtn").show();
+                 $j("#shownamebtn").hide();
+             }
+             else {
+                 console.log('In 2');
+                 $j("#shownamebtn").show();
+                 $j("#showhtbtn").hide();
+
+             }
+         });
+     });           
+ </script>    
+</head>
+<body>
+    <div class="container">
+        <apex:messages style="color:red"/>
+        <apex:form >
+            <div class="text-center">
+                <ul>
+                  <li> 
+                      <input type="radio" name="Searchtype" value="SearchbyHtNo" id="SearchbyHtNo"><span>Search by Hall Ticket Number </span></input>
+                  </li>
+                  <li>
+                     <input type="radio" name="Searchtype" value="SearchbyName" id="SearchbyName"><span>Search by Name</span></input>
+                 </li>
+             </ul>
+            </div>         
+     <br/>
+     <div class="hidesec">
+        <div id="showhtbtn">
+            <br/>    
+            <h5>Enter the Hall Ticket Number: </h5>           
+            <apex:input value="{!htNo}" />
+            <span> </span>
+            <apex:commandButton action="{!getStuByHtNo}" value="Submit"></apex:commandButton>
+        </div>
+        <div id="shownamebtn">
+          <br/>
+          <h5>Enter the Name: </h5>           
+          <apex:input value="{!name}" />
+          <span> </span>
+          <apex:commandButton action="{!getStuByName}" value="Submit"></apex:commandButton>
+      </div>
+  </div>
+
+  <br/>
+  <br/>
+
+  <div class="table-responsive">  
+    <table class="table table-bordered">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Branch</th>
+            <th>Batch</th>            
+            <th style="width:10%">Phone</th>
+            <th>Student ID</th>
+            <th>Actions</th>
+        </tr>     
+        <apex:repeat value="{!student}" var="stu">
+            <tr>
+                <td>{!stu.FirstName__c}</td>
+                <td>{!stu.LastName__c}</td>
+                <td>{!stu.Email__c}</td>
+                <td>{!stu.Branch__c}</td>
+                <td>{!stu.Batch__c}</td>
+                <td>{!stu.Phone__c}</td>
+                <td>{!stu.Id}</td>   
+                <td>
+                    <apex:commandLink action="{!viewStudent}" styleClass="btn">
+                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                        <apex:param name="studentID" value="{!stu.Id}" />
+                    </apex:commandLink> 
+                    <span>  </span>                                
+                    <apex:commandLink action="{!editStudent}" styleClass="btn">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        <apex:param name="studentID" value="{!stu.Id}" />
+                    </apex:commandLink> 
+                </td>
+            </tr>
+        </apex:repeat> 
+    </table>  
+</div>   
+</apex:form>
+</div>
+</body>
+</html>
+
+</apex:page>

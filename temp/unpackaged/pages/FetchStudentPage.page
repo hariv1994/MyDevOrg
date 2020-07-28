@@ -1,0 +1,17 @@
+<apex:page docType="html-5.0" showHeader="true" sidebar="true" controller="FetchStudents">
+
+<html>
+<head>
+    <title> Fetch Student</title>
+</head>
+<body>
+ <!--  <apex:repeat value="{!fullstudent}" var="stu">
+    <apex:outputText value="{!stu.FirstName__c}" /><br/>
+    <apex:outputText value="{!stu.LastName__c}" /><br/>
+    <apex:outputText value="{!stu.Email__c}" /><br/>
+    <apex:outputText value="{!stu.Phone__c}" />
+</apex:repeat> -->
+</body>
+</html>
+
+</apex:page>

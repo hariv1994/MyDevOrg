@@ -1,0 +1,16 @@
+<apex:page standardController="Contact">    
+    Hello {!$User.FirstName}. Please edit this account <p/>
+    <apex:form >
+        <apex:pageBlock title="Quick Edit for {!Contact.Name}">
+            <apex:pageBlockSection >
+                <apex:inputField value="{!Contact.Phone}" label="Account Name : "/> <p/>
+                <apex:outputField value="{!Contact.MobilePhone}" label="Mobile #"/> <p/>
+                <apex:inputField value="{!Contact.Email}" label="{!Contact.FirstName}"/>
+            </apex:pageBlockSection> 
+            <apex:pageBlockButtons >
+            	<apex:commandButton action="{!save}" value="Save"/>
+				<apex:commandButton action="{!cancel}" value="Cancel"/>                
+            </apex:pageBlockButtons>
+        </apex:pageBlock>        
+    </apex:form>    
+</apex:page>

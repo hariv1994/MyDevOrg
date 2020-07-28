@@ -1,0 +1,15 @@
+<apex:page standardController="Book__c" extensions="BookValues" showHeader="false" sidebar="false">
+    <apex:form >
+        <apex:pageBlock Title="Apex Book Values">
+            <apex:pageBlockSection title="Test Section">
+                <apex:inputField value="{!Book__c.States__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Apex Book Value">
+                <apex:selectList value="{!testPickValue}" >
+                	<apex:selectOptions value="{!Book__c.States__c}"></apex:selectOptions>
+                </apex:selectList>
+                <!--  <apex:actionSupport event="onclick" action="{}"/> --> 
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

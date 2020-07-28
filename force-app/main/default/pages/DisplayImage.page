@@ -1,0 +1,14 @@
+<apex:page sidebar="false" showHeader="false" name="DisplayImage">
+    <h1>
+        Hello World
+    </h1>
+    <apex:image url="https://developer.salesforce.com/files/salesforce-developer-network-logo.png"/>
+    <apex:pageBlock title="Sarat Page Block">
+        <apex:pageBlockSection title="Page Block Section Title">
+        	I am three point deep!!!
+        </apex:pageBlockSection>    
+        <apex:pageBlockSection title="2nd section">
+        	This is the second page block section @!!
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

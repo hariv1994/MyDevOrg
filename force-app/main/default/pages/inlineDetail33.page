@@ -1,0 +1,4 @@
+<apex:page standardController="Account" applyBodyTag="false">
+    <apex:detail subject="{!account.Id}" relatedList="false" inlineEdit="true"/>
+    <apex:outputText value="{!NOW()}"/>
+</apex:page>

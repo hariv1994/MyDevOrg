@@ -1,0 +1,247 @@
+<apex:page showHeader="false" sidebar="fasle" standardController="Student__c" extensions="StudentDetailExt" >
+<c:HeaderComponent />
+<html>
+<head>
+    <title>Student Detail Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+    <style type="text/css">
+        .container {
+            margin-top: 10px;
+            position: relative;
+        }
+    </style>
+</head>     
+<body>
+<div class="container">
+<div class="stuDetail">
+<!--    <apex:outputPanel id="myPanel" layout="block">
+        <apex:outputText >{!Student__c.FirstName__c}</apex:outputText>
+        <apex:outputText >{!Student__c.LastName__c}</apex:outputText>
+    </apex:outputPanel>
+    <div class="row">
+        <div class="col-md-6">First Name: {!Student__c.FirstName__c}</div>
+        <div class="col-md-6">Last Name : {!Student__c.LastName__c}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">Hall Ticket No : {!Student__c.ID__c}</div>
+        <div class="col-md-6">Batch : {!Student__c.Batch__c}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">Branch : {!Student__c.Branch__c}</div>
+        <div class="col-md-6">Phone : {!Student__c.Phone__c}</div>
+    </div> -->
+    <apex:outputPanel >
+    <apex:form >
+    	<apex:outputLabel value="Report :"></apex:outputLabel>
+    	<apex:selectList value="{!selectedYearPDF}" size="1" multiselect="false">
+    		<apex:selectOptions value="{!reports}" />
+    	</apex:selectList>
+    	<apex:inputText value="{!testVariable}" />
+    	<apex:commandButton action="{!IyrRegReport}" value="GO" />
+    </apex:form>
+    </apex:outputPanel>
+
+    <apex:pageBlock >
+        <apex:pageBlockSection >
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="First Name :"></apex:outputLabel>
+                <apex:outputText value="{!Student__c.FirstName__c}"></apex:outputText>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Last Name :"></apex:outputLabel>
+                <apex:outputText value="{!Student__c.LastName__c}"></apex:outputText>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Hall Ticket No :"></apex:outputLabel>
+                <apex:outputText value="{!Student__c.ID__c}"></apex:outputText>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Batch :"></apex:outputLabel>
+                <apex:outputText value="{!Student__c.Batch__c}"></apex:outputText>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Branch :"></apex:outputLabel>
+                <apex:outputText value="{!Student__c.Branch__c}"></apex:outputText>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Phone :"></apex:outputLabel>
+                <apex:outputText value="{!Student__c.Phone__c}"></apex:outputText>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Email :"></apex:outputLabel>
+                <apex:outputText value="{!Student__c.Email__c}"></apex:outputText>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Address :"></apex:outputLabel>
+                <apex:outputText value="{!Student__c.Address__c}"></apex:outputText>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Remarks :"></apex:outputLabel>
+                <apex:outputText value="{!Student__c.Remarks__c}"></apex:outputText>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</div>
+<apex:tabPanel >
+<apex:tab label="1st Year" name="1st Year"> 
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr>
+                    <th>Exam Type</th>
+                    <th>Course Title</th>
+                    <th>Marks</th>
+                </tr>
+                <apex:repeat value="{!firstYearISemReg}" var="exam">
+                    <tr>
+                        <td>{!exam.ExamType__c}</td>
+                        <td>{!exam.Course__r.CourseName__c}</td>
+                        <td>{!exam.Marks__c}</td>
+                    </tr>
+                </apex:repeat>
+                <apex:repeat value="{!firstYearIISemReg}" var="exam">
+                    <tr>
+                        <td>{!exam.ExamType__c}</td>
+                        <td>{!exam.Course__r.CourseName__c}</td>
+                        <td>{!exam.Marks__c}</td>
+                    </tr>
+                </apex:repeat>
+                <apex:repeat value="{!firstYearISemSup}" var="exam">
+                    <tr>
+                        <td>{!exam.ExamType__c}</td>
+                        <td>{!exam.Course__r.CourseName__c}</td>
+                        <td>{!exam.Marks__c}</td>
+                    </tr>
+                </apex:repeat>
+                <apex:repeat value="{!firstYearIISemSup}" var="exam">
+                    <tr>
+                        <td>{!exam.ExamType__c}</td>
+                        <td>{!exam.Course__r.CourseName__c}</td>
+                        <td>{!exam.Marks__c}</td>
+                    </tr>
+                </apex:repeat>
+            </table>
+        </div>
+</apex:tab> 
+<apex:tab label="2nd Year" name="2nd Year"> 
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr>
+                    <th>Exam Type</th>
+                    <th>Course Title</th>
+                    <th>Marks</th>
+                </tr>
+                <apex:repeat value="{!secondYearISemReg}" var="exam">
+                    <tr>
+                        <td>{!exam.ExamType__c}</td>
+                        <td>{!exam.Course__r.CourseName__c}</td>
+                        <td>{!exam.Marks__c}</td>
+                    </tr>
+                </apex:repeat>
+                <apex:repeat value="{!secondYearIISemReg}" var="exam">
+                    <tr>
+                        <td>{!exam.ExamType__c}</td>
+                        <td>{!exam.Course__r.CourseName__c}</td>
+                        <td>{!exam.Marks__c}</td>
+                    </tr>
+                </apex:repeat>
+                <apex:repeat value="{!secondYearISemSup}" var="exam">
+                    <tr>
+                        <td>{!exam.ExamType__c}</td>
+                        <td>{!exam.Course__r.CourseName__c}</td>
+                        <td>{!exam.Marks__c}</td>
+                    </tr>
+                </apex:repeat>
+                <apex:repeat value="{!secondYearIISemSup}" var="exam">
+                    <tr>
+                        <td>{!exam.ExamType__c}</td>
+                        <td>{!exam.Course__r.CourseName__c}</td>
+                        <td>{!exam.Marks__c}</td>
+                    </tr>
+                </apex:repeat>
+            </table>
+        </div>
+</apex:tab>
+<apex:tab label="3rd Year" name="3rd Year"> 
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr>
+                    <th>Exam Type</th>
+                    <th>Course Title</th>
+                    <th>Marks</th>
+                </tr>
+                <apex:repeat value="{!thirdYearISemReg}" var="exam">
+                    <tr>
+                        <td>{!exam.ExamType__c}</td>
+                        <td>{!exam.Course__r.CourseName__c}</td>
+                        <td>{!exam.Marks__c}</td>
+                    </tr>
+                </apex:repeat>
+                <apex:repeat value="{!thirdYearIISemReg}" var="exam">
+                    <tr>
+                        <td>{!exam.ExamType__c}</td>
+                        <td>{!exam.Course__r.CourseName__c}</td>
+                        <td>{!exam.Marks__c}</td>
+                    </tr>
+                </apex:repeat>
+                <apex:repeat value="{!thirdYearISemSup}" var="exam">
+                    <tr>
+                        <td>{!exam.ExamType__c}</td>
+                        <td>{!exam.Course__r.CourseName__c}</td>
+                        <td>{!exam.Marks__c}</td>
+                    </tr>
+                </apex:repeat>
+                <apex:repeat value="{!thirdYearIISemSup}" var="exam">
+                    <tr>
+                        <td>{!exam.ExamType__c}</td>
+                        <td>{!exam.Course__r.CourseName__c}</td>
+                        <td>{!exam.Marks__c}</td>
+                    </tr>
+                </apex:repeat>
+            </table>
+        </div></apex:tab>
+<apex:tab label="4th Year" name="4th Year"> 
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr>
+                    <th>Exam Type</th>
+                    <th>Course Title</th>
+                    <th>Marks</th>
+                </tr>
+                <apex:repeat value="{!fourthYearISemReg}" var="exam">
+                    <tr>
+                        <td>{!exam.ExamType__c}</td>
+                        <td>{!exam.Course__r.CourseName__c}</td>
+                        <td>{!exam.Marks__c}</td>
+                    </tr>
+                </apex:repeat>
+                <apex:repeat value="{!fourthYearIISemReg}" var="exam">
+                    <tr>
+                        <td>{!exam.ExamType__c}</td>
+                        <td>{!exam.Course__r.CourseName__c}</td>
+                        <td>{!exam.Marks__c}</td>
+                    </tr>
+                </apex:repeat>
+                <apex:repeat value="{!fourthYearISemSup}" var="exam">
+                    <tr>
+                        <td>{!exam.ExamType__c}</td>
+                        <td>{!exam.Course__r.CourseName__c}</td>
+                        <td>{!exam.Marks__c}</td>
+                    </tr>
+                </apex:repeat>
+                <apex:repeat value="{!fourthYearIISemSup}" var="exam">
+                    <tr>
+                        <td>{!exam.ExamType__c}</td>
+                        <td>{!exam.Course__r.CourseName__c}</td>
+                        <td>{!exam.Marks__c}</td>
+                    </tr>
+                </apex:repeat>
+            </table>
+        </div>
+</apex:tab>
+</apex:tabPanel>
+</div>
+</body>
+</html>
+
+
+</apex:page>

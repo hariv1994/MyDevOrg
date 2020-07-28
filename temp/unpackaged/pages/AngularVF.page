@@ -1,0 +1,26 @@
+<apex:page showHeader="false" sidebar="false" controller="AngularVFController">
+<html ng-app="myApp">
+<title>MY Angular VF</title>
+</html>
+<body>	
+	<div ng-controller="MyController as myCtrl">
+		<h5>This is my new Angular page!!!</h5>
+		Hello {{ 1 + 2 }}
+		<ul ng-repeat="con in myCtrl.contacts"> 
+			<li>{{con.FirstName}}</li>
+			<li>{{con.LastName}}</li>
+		</ul>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script>
+		var app = angular.module('myApp',[]);
+		app.controller('MyController', myfun);
+		function myfun() {
+			this.contacts = {!contacts}
+		}
+
+	</script>
+	
+</body>
+</apex:page>

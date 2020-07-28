@@ -1,0 +1,58 @@
+<apex:component >
+
+
+<html>
+<head>
+	<title>Header Component</title>
+	<style type="text/css">
+		.container {
+			width: 960px;
+			margin: 0 auto;
+		}
+		header {
+			background: white;
+			width: 100%;
+			position: relative;
+			border-bottom: #e8491d 3px solid;
+		}
+		.headcontent {
+			float: center;
+			text-align: center;	
+			font-stretch: ultra-condensed;		
+		}
+		li {
+			list-style: none;
+			float: center;
+			margin-top: 0px;
+			padding-top: 0px;
+			font-size: 100%;
+			color: blue;
+			text-shadow: #EEEE00 0 0 10px;
+		}
+		
+		header li {
+			float: center;
+		}
+	</style>
+</head>
+<body>
+
+	<header>
+		<div class="container">	
+				
+			<div class="headcontent">
+
+				<ul>	
+					<li><h2>GAYATRI VIDYA PARISHAD COLLEGE OF ENGINNERING(AUTONOMOUS)</h2></li>
+					<li><h3>Approved By AICTE, New Delhi and Affliated to JNTU Kakinada</h3></li>
+					<li><h5>All UG Programs accredited by NBA :: Reaccredited by NAAC with "A" Grade with CGPA of 3.47/4.00</h5> </li>
+					<li><h5>Madhurawada, Visakhapatnam - 530048.</h5></li>
+				</ul>
+			</div>
+		</div>	
+	</header>
+</body>
+</html>
+
+
+</apex:component>
